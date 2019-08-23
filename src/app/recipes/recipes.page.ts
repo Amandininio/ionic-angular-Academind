@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
+import { RecipesService } from '../services/recipes.service';
 
 @Component({
   selector: 'app-recipes',
@@ -7,21 +8,17 @@ import { Recipe } from './recipe.model';
   styleUrls: ['./recipes.page.scss'],
 })
 export class RecipesPage implements OnInit {
-  recipes: Recipe[] = [
-  { id: 'r1',
-    title: 'Banana Bread',
-    imageUrl: 'https://images.app.goo.gl/ZUNv2ssMo2D5sgDeA',
-    ingredients: ['2 eggs', '50g Sugar', '3Bananas', 'butter', 'flour']
-  },
-  { id: 'r2',
-  title: 'Pizza',
-  imageUrl: 'https://images.app.goo.gl/vTLAPMSSHtywUGUv7',
-  ingredients: ['bread Dough', 'tomatoes', 'Mushrooms', 'Potatoes', 'pepper', 'olives']
-  }
-  ];
-  constructor() { }
+  recipes: Recipe[];
+  // this is because I had to understand the spread operator in the recipes Service
+  // Deprecated
+  // recipes2: Recipe[];
+  constructor(private recipeService: RecipesService) { }
 
   ngOnInit() {
+    this.recipes = this.recipeService.getAllRecipes();
+    // this.recipes2 = this.recipeService.recipes;
+    // console.log(this.recipes2, this.recipes);
+
   }
 
 }
