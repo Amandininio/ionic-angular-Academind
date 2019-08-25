@@ -23,6 +23,7 @@ export class RecipeDetailPage implements OnInit {
          * TODO: Redirect
          */
         console.log('error');
+        this.router.navigate(['/recipes']);
         return ;
       } else {
         const recipeID = paraMap.get('recipeID');
@@ -34,6 +35,9 @@ export class RecipeDetailPage implements OnInit {
   }
 
   onDelete() {
+    /**
+     * Try to do has the example: https://ionicframework.com/docs/v3/api/components/alert/AlertController/
+     */
     this.alertController.create({
       header: 'Alert',
       message: 'Are you sure to delete this recipe ?',

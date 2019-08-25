@@ -15,10 +15,14 @@ export class RecipesPage implements OnInit {
   constructor(private recipeService: RecipesService) { }
 
   ngOnInit() {
-    this.recipes = this.recipeService.getAllRecipes();
     // this.recipes2 = this.recipeService.recipes;
     // console.log(this.recipes2, this.recipes);
-
   }
+
+  // S'execute au changement de page https://ionicframework.com/blog/navigating-lifecycle-events/
+  ionViewWillEnter() {
+    this.recipes = this.recipeService.getAllRecipes();
+  }
+
 
 }
